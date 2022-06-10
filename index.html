@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Anthem Clustering with K-Means</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .bg-map {
+            width: 100%;
+            min-height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .settings-button {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .settings-button>button {
+            background-color: white;
+            color: black;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            border: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
+            padding: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pointer-events-none {
+            pointer-events: none;
+        }
+
+        .open {
+            width: 100% !important;
+            height: 100% !important;
+            opacity: 1 !important;
+            pointer-events: all;
+        }
+
+        .settings {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            align-items: center;
+            padding: 50px;
+
+            opacity: 0;
+            width: 0;
+            overflow-x: scroll;
+        }
+
+        .settings>img {
+            width: 350px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <iframe src="./map.html" width="100%" height="100%" class="bg-map" frameborder="0"></iframe>
+    </div>
+
+    <div class="settings-button">
+        <button id="show-word-cloud-button">Show Word Clouds</button>
+    </div>
+
+    <div class="settings">
+        <img src="./assets/word_cloud_0.png" alt="" srcset="">
+        <img src="./assets/word_cloud_1.png" alt="" srcset="">
+        <img src="./assets/word_cloud_2.png" alt="" srcset="">
+        <img src="./assets/word_cloud_3.png" alt="" srcset="">
+        <img src="./assets/word_cloud_4.png" alt="" srcset="">
+
+    </div>
+
+    <script>
+        const showWordCloudButton = document.getElementById('show-word-cloud-button');
+        const settings = document.querySelector('.settings');
+        const map = document.querySelector('.bg-map');
+
+        showWordCloudButton.addEventListener('click', () => {
+            showWordCloudButton.innerText = (showWordCloudButton.innerText == 'Hide Word Clouds') ? 'Show Word Clouds' : 'Hide Word Clouds';
+            settings.classList.toggle('open');
+            map.classList.toggle('pointer-events-none');
+        });
+
+    </script>
+
+</body>
+
+</html>
